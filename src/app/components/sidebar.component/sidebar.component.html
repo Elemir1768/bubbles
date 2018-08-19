@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light h-100 align-items-start p-0">
+    <button class="navbar-toggler position-fixed mt-3 ml-4 d-block" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse mt-5 p-4" id="collapseBasic" [collapse]="isCollapsed">
+        <div class="navbar-nav flex-column">
+            <a class="nav-item nav-link active" href="#">Цели</a>
+            <a class="nav-item nav-link" href="#">Добавить цель</a>
+            <a class="nav-item nav-link" href="#">Настройки</a>
+        </div>
+    </div>
+</nav>

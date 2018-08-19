@@ -1,0 +1,43 @@
+<div class="d-flex align-items-center flex-column">
+    <div class="btn btn-info btn-lg">Уверенный джуниор
+        <progressbar [max]="100" [value]="26" type="success" [striped]="true" [animate]="true"><i>26%</i></progressbar>
+    </div>
+    <div class="bubble-tree">
+        <div *ngFor = "let target of targetList" class="task" [ngClass]="positionClass">
+            <span class="line"></span>
+            <div class="bubble">
+                <progressbar [animate]="true" [value]="target.currentValue" [max]="target.maxValue">
+                    <i>{{ target.currentValue/target.maxValue * 100 | number: "1.0-1" }}%</i>
+                </progressbar>
+                <span class="label">{{target.name}}</span>
+            </div>
+        </div>
+        <div class="task center">
+            <span class="line"></span>
+            <div class="bubble">
+                <progressbar [animate]="true" [value]="22"><i>22%</i></progressbar>
+                <span class="label">Базовая теория</span>
+            </div>
+            <div class="sub-tree">
+                <div class="task left">
+                    <span class="line"></span>
+                    <div class="bubble blue">
+                        <progressbar [animate]="true" [value]="50"><i>50%</i></progressbar>
+                        <span class="label">learn.javascript.ru</span>
+                    </div>
+                </div>
+                <div class="task right">
+                    <span class="line"></span>
+                    <div class="bubble yellow">
+                        <progressbar [animate]="true" [value]="60"><i>60%</i></progressbar>
+                        <span class="label">Грокаем алгоритмы</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-inline-block position-fixed" style="bottom: 3rem; right: 2rem">
+    <button type="button" class="btn btn-info rounded-circle mr-2" title="Добавить подзадачу"><i class="fa fa-plus"></i></button>
+    <button type="button" class="btn btn-success rounded-circle" title="Редактировать"><i class="fas fa-pencil-alt"></i></button>
+</div>

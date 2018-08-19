@@ -1,0 +1,147 @@
+$pink: #ffb3cf;
+$blue: #71b9c8;
+$yellow: #ffc835;
+$green: #1fac3f;
+
+$colors: (pink: $pink, blue: $blue, yellow: $yellow, green: $green);
+
+.bubble-tree {
+  .task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 2rem;
+
+    .bubble {
+      $base-color: $pink !default;
+      position: relative;
+      color: $base-color - 40%;
+      word-break: break-word;
+      text-align: center;
+      padding: 2rem 1rem;
+      border: 1px solid $base-color;
+      width: 8rem;
+      height: 8rem;
+      box-shadow: 0 0 58px 10px $base-color inset;
+      border-radius: 50% 0 50% 50%;
+      transition: all 0.2s;
+
+      .label {
+        margin-top: 0.3rem;
+      }
+      progressbar {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 8rem;
+        height: 8rem;
+        background: transparent;
+        border-radius: 50% 0 50% 50%;
+        transition: all 0.2s;
+        left: 0;
+        top: 0;
+
+        bar {
+          background-color: transparentize($base-color/2+20, 0.8);
+        }
+      }
+      &:hover {
+        box-shadow: 0 0 58px 10px ($base-color - 20) inset;
+        cursor: pointer;
+        width: 8.5rem;
+        height: 8.5rem;
+
+        progressbar {
+          width: 8.5rem;
+          height: 8.5rem;
+        }
+      }
+
+      @each $color, $value in $colors {
+        &.#{$color} {
+          $base-color: $value;
+          color: $base-color - 40%;
+          border: 1px solid $base-color;
+          box-shadow: 0 0 58px 10px $base-color inset;
+          bar {
+            background-color: transparentize($base-color/2+20, 0.8);
+          }
+          &:hover {
+            box-shadow: 0 0 58px 10px ($base-color - 20) inset;
+          }
+        }
+      }
+    }
+    .line {
+      width: 1px;
+      height: 70px;
+      background: #b9d1da;
+      display: inline-block;
+    }
+
+    &.center {
+      &>.bubble {
+        transform: rotate(-45deg);
+        margin-top: 20px;
+        .label {
+          display: inline-block;
+          transform: rotate(45deg);
+        }
+
+        progressbar {
+          transform: rotate(-45deg);
+          i {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+
+    &.left {
+      margin-left: 0;
+      .bubble {
+        transform: unset;
+        margin-top: 0;
+        .label {
+          transform: unset;
+        }
+        progressbar {
+          transform: rotate(-90deg);
+          i {
+            transform: rotate(90deg);
+          }
+        }
+      }
+      .line {
+        transform: rotate(25deg);
+        margin-left: 10rem;
+      }
+    }
+    &.right {
+      margin-right: 0;
+      .bubble {
+        transform: rotate(-90deg);
+        margin-top: 0;
+        .label {
+          display: inline-block;
+          transform: rotate(90deg);
+        }
+        progressbar {
+          i {
+            transform: rotate(90deg);
+          }
+        }
+      }
+      .line {
+        transform: rotate(-25deg);
+        margin-right: 10rem;
+      }
+    }
+  }
+
+  .sub-tree {
+    display: flex;
+  }
+}
+
+
